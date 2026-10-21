@@ -1,0 +1,9 @@
+node_modules
+dist
+apks
+reports
+work
+tools
+test
+.claude
+*.local

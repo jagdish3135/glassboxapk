@@ -1,0 +1,33 @@
+{
+  "name": "glassboxapk",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "view": "node scripts/run.mjs scripts/view.ts",
+    "decompile": "node scripts/run.mjs scripts/decompile.ts",
+    "scan": "node scripts/run.mjs scripts/scan-apk.ts",
+    "validate-report": "node scripts/run.mjs scripts/validate-report.ts",
+    "sample-report": "node scripts/run.mjs scripts/sample-report.ts",
+    "build": "tsc -b && vite build",
+    "serve": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "test": "node scripts/run.mjs scripts/fixture.test.ts && node scripts/run.mjs scripts/report.test.ts"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.1",
+    "jszip": "^3.10.1",
+    "pptxgenjs": "^4.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.21.5",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

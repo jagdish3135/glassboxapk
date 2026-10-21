@@ -1,0 +1,15 @@
+node_modules
+test/fixture.apk
+test/out
+dist
+*.local
+.DS_Store
+
+# Your analysis stays on your machine
+apks/*
+!apks/.gitkeep
+!apks/README.md
+reports/
+work/
+tools/
+*.tsbuildinfo
