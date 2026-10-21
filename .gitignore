@@ -13,3 +13,5 @@ reports/
 work/
 tools/
 *.tsbuildinfo
+
+.vercel
