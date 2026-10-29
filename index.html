@@ -7,11 +7,14 @@
     <meta name="description" content="Add the GlassBoxAPK repo to Claude Code, Codex or Cursor, hand it an APK, and watch every flow of the app as an animated system design in your browser. Export to PPT or PDF." />
     <meta property="og:title" content="GlassBoxAPK — see through any Android app" />
     <meta property="og:description" content="Your AI agent reads the APK. You watch it work: animated, code-linked system design for any Android app, exportable to PPT and PDF." />
-    <meta name="theme-color" content="#ece8df" />
+    <meta property="og:image" content="/landing/poster.webp" />
+    <meta name="theme-color" content="#0b0f11" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Fragment+Mono&family=Young+Serif&display=swap" rel="stylesheet" />
+    <!-- Fonts load without blocking the first paint (display=swap shows text right away). -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Fragment+Mono&family=Young+Serif&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Fragment+Mono&family=Young+Serif&display=swap" /></noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -44,6 +44,21 @@
 
 You add this repo to your AI coding agent. You drop an APK into `apks/` and say **"Analyze apks/your-app.apk"**. The agent decompiles it, traces every flow from an entry point to a goal, and opens an animated system design of the app in your browser.
 
+### 🧊 The website: the glass box opens
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/readme/landing-hero.webp" alt="Landing page hero: a glass APK box with the custom cursor turned into a magnifier lens"></td>
+    <td width="50%"><img src="docs/readme/landing-crack.webp" alt="Scrolling cracks the box into glass layers labelled manifest, activities, screens and network"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/readme/landing-flows.webp" alt="The layers become flow nodes, with glowing lines and packets between them"></td>
+    <td><img src="docs/readme/landing-deck.webp" alt="The nodes snap into a slide deck that flips, standing for the PPT and PDF export"></td>
+  </tr>
+</table>
+
+[glassboxapk.vercel.app](https://glassboxapk.vercel.app) is a scroll story built with React Three Fiber, GSAP ScrollTrigger and Lenis. The hero model is made in Blender by [scripts/blender/glass_box.py](scripts/blender/glass_box.py). Hover the box and the cursor becomes a lens that zooms the 3D. With reduced motion, or without WebGL, the page shows a still render instead. Outside assets are listed in [CREDITS.md](CREDITS.md).
+
 ---
 
 ## ⚡ How it works
@@ -194,6 +209,7 @@ The full method, with search patterns for endpoints, auth, storage, push and obf
 | `npm run build` | Type check and build to `dist/` |
 | `npm run serve` | Serve the production build |
 | `npm test` | 49 checks: the APK scanner on a synthetic APK, the validator on good and broken reports, and both exports (files go to `test/out/`) |
+| `npm run test:e2e` | Playwright check of the website at 1440 px and 390 px: loader, scroll story, cursor, the call to action into the viewer, and the reduced-motion poster. Add `-- --shots` to save screenshots to `test/out/landing/` |
 | `node docs/readme/capture.mjs` | Re-capture the README screenshots and videos from a running viewer |
 | `node docs/readme/make-svgs.mjs` | Regenerate the README banner and diagram |
 

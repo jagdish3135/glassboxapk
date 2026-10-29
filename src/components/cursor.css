@@ -1,0 +1,56 @@
+/* The custom cursor exists only when JS turns it on (fine pointer, no reduced motion). */
+.cur { display: none; }
+.cur-on .cur { display: block; }
+.cur-hide, .cur-hide * { cursor: none !important; }
+
+.cur-ring, .cur-dot {
+  position: fixed; left: 0; top: 0; z-index: 2147483000; pointer-events: none;
+  opacity: 0; transition: opacity 0.25s;
+  will-change: transform;
+}
+.cur-ring::before {
+  content: ''; position: absolute; left: 0; top: 0; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(150, 220, 230, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(127, 227, 240, 0.25), 0 0 14px rgba(127, 227, 240, 0.12);
+  mix-blend-mode: difference;
+  transition: width 0.35s var(--ease, ease), height 0.35s var(--ease, ease), margin 0.35s var(--ease, ease),
+    border-color 0.25s, background 0.25s, transform 0.15s;
+}
+.cur-dot::before {
+  content: ''; position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--signal, #ff5a1f);
+  transition: transform 0.25s var(--ease, ease);
+}
+.cur-label {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  font-family: var(--mono, monospace); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #fff; white-space: nowrap; opacity: 0; transition: opacity 0.2s;
+  mix-blend-mode: difference;
+}
+
+/* Over links and buttons: the ring grows and the dot shrinks. */
+.cur-ring[data-state='hover']::before { width: 54px; height: 54px; margin: -27px 0 0 -27px; background: rgba(150, 220, 230, 0.1); }
+.cur-on .cur-ring[data-state='hover'] ~ .cur-dot::before { transform: scale(0.5); }
+
+/* Labelled areas: a wider ring with text in it. */
+.cur-ring[data-state='label']::before { width: 74px; height: 74px; margin: -37px 0 0 -37px; }
+.cur-ring[data-state='label'] .cur-label { opacity: 1; }
+
+/* Over the glass box: a magnifier lens (the zoom itself is a shader in the 3D scene). */
+.cur-ring[data-state='inspect']::before {
+  width: var(--lens); height: var(--lens); margin: calc(var(--lens) / -2) 0 0 calc(var(--lens) / -2);
+  mix-blend-mode: normal; border-color: rgba(220, 245, 248, 0.9); background: transparent;
+  box-shadow: inset 0 0 18px rgba(127, 227, 240, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+.cur-ring[data-state='inspect'] .cur-label { opacity: 1; mix-blend-mode: normal; transform: translate(-50%, calc(var(--lens) / 2 + 10px)); color: #dff3f6; }
+.cur-ring[data-state='inspect'] ~ .cur-dot::before { transform: scale(0); }
+
+/* Pressed: shrink quickly. */
+.cur-ring.cur-pressed::before { transform: scale(0.82); transition-duration: 0.08s; }
+
+.cur-ring .cur-label:empty { display: none; }
+
+/* The viewer keeps its native cursor; the ring is a quieter follower there. */
+.cur-mode-ring .cur-ring::before { width: 28px; height: 28px; margin: -14px 0 0 -14px; }
